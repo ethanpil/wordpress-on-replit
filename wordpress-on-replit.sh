@@ -52,6 +52,10 @@ cat >wordpress/wp <<EOL
 export PATH=$PATH:~/usr/bin:~:~/php
 php -c ~/php/php.ini ~/php/wp-cli.phar
 EOL
+chmod +x wp
+
+#remove default repl.it code file
+rm index.php
 
 #Setup the repl to start PHP with the correct php.ini that includes our modules
 echo 'run = "php -c ~/php/php.ini -S 0.0.0.0:8000 -t wordpress/"' >> .replit
