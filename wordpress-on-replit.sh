@@ -50,7 +50,7 @@ mv wp-cli.phar ~/php/wp-cli.phar
 cat >wordpress/wp <<EOL
 #!/bin/bash
 export PATH=$PATH:~/usr/bin:~:~/php
-php -c ~/php/php.ini ~/php/wp-cli.phar
+php -c ~/php/php.ini ~/php/wp-cli.phar "$@"
 EOL
 chmod +x wp
 
