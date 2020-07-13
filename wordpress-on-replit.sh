@@ -1,8 +1,8 @@
 #!/bin/bash
 # Install WordPress on Repl.it
 # 
-# Create a new Repl.it as a PHPWebServer
-# curl -O https://raw.githubusercontent.com/ethanpil/wordpress-on-replit.sh/master/wordpress-on-replit.sh && chmod 0700 wordpress-on-replit.sh && echo "Starting install." && bash wordpress-on-replit.sh > wordpress-on-replit.log && echo "Complete. See wordpress-on-replit.log"
+# Create a new Repl.it as a PHP Web Server and run this script.
+# wget -O - https://raw.githubusercontent.com/ethanpil/wordpress-on-replit/master/wordpress-on-replit.sh | bash
 
 #Download, extract and cleanup required missing PHP modules
 wget http://archive.ubuntu.com/ubuntu/pool/main/p/php7.2/php7.2-mysql_7.2.24-0ubuntu0.18.04.6_amd64.deb
