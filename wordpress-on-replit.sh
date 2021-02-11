@@ -64,3 +64,5 @@ rm index.php
 
 #Setup the repl to start PHP with the correct php.ini that includes our modules
 echo 'run = "php -c ~/$REPL_SLUG/php/php.ini -S 0.0.0.0:8000 -t wordpress/"' >> .replit
+
+echo "Done!"
