@@ -15,8 +15,8 @@ mv ~/$REPL_SLUG/php/mysqlnd.so ~/$REPL_SLUG/php/A-mysqlnd.so #To ensure mysqlnd.
 for Module in $( ls ~/$REPL_SLUG/php/*.so ); do echo "extension=$Module" >> ~/$REPL_SLUG/php/php.ini; done
 rm -rf ./etc/ 
 rm -rf ./usr/
-rm php7.2-mysql_7.2.24-0ubuntu0.18.04.6_amd64.deb
-rm php7.2-sqlite3_7.2.24-0ubuntu0.18.04.6_amd64.deb
+rm php7.2-mysql_7.2.24-0ubuntu0.18.04.7_amd64.deb
+rm php7.2-sqlite3_7.2.24-0ubuntu0.18.04.7_amd64.deb
 
 #Download, extract and cleanup WordPress Latest
 wget https://wordpress.org/latest.zip
@@ -26,7 +26,7 @@ rm latest.zip
 #Setup the wp-config file and salts
 #todo: generate a different salt for each key
 mv ./wordpress/wp-config-sample.php ./wordpress/wp-config.php
-NEW_PHRASE=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9!#$%&()*+,-.:;<=>?@^_`{|}~/$REPL_SLUG' | fold -w 60 | head -n 1)
+NEW_PHRASE=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9!#$%&()*+,-.:;<=>?@^_{|}~' | fold -w 60 | head -n 1)
 sed -i "s/put your unique phrase here/${NEW_PHRASE}/g" ./wordpress/wp-config.php
 
 #Download, extract and cleanup sqlite plugin for WP
