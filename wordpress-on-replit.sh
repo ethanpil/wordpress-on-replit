@@ -5,8 +5,8 @@
 # wget -O - https://raw.githubusercontent.com/ethanpil/wordpress-on-replit/master/wordpress-on-replit.sh | bash
 
 #Download, extract and cleanup required missing PHP modules
-wget http://archive.ubuntu.com/ubuntu/pool/main/p/php7.2/php7.2-mysql_7.2.24-0ubuntu0.18.04.6_amd64.deb
-wget http://archive.ubuntu.com/ubuntu/pool/main/p/php7.2/php7.2-sqlite3_7.2.24-0ubuntu0.18.04.6_amd64.deb
+wget http://archive.ubuntu.com/ubuntu/pool/main/p/php7.2/php7.2-mysql_7.2.24-0ubuntu0.18.04.7_amd64.deb
+wget http://archive.ubuntu.com/ubuntu/pool/main/p/php7.2/php7.2-sqlite3_7.2.24-0ubuntu0.18.04.7_amd64.deb
 for Module in $( ls php*.deb ); do dpkg -x $Module .; done
 mkdir ~/$REPL_SLUG/php
 cp usr/lib/php/*/* ~/$REPL_SLUG/php
