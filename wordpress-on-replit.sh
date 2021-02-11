@@ -30,9 +30,7 @@ NEW_PHRASE=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9!#$%&()*+,-.:;<=>?@^_{|}~' | fo
 sed -i "s/put your unique phrase here/${NEW_PHRASE}/g" ./wordpress/wp-config.php
 
 #Add SSL fix to wp-config.php for repl.it proxy
-cat << EOF >> ./wordpress/wp-config.php
-$_SERVER[ "HTTPS" ] = "on";
-EOF
+echo '$_SERVER[ "HTTPS" ] = "on";' >> ./wordpress/wp-config.php
 
 #Download, extract and cleanup sqlite plugin for WP
 cd ./wordpress/wp-content/plugins
