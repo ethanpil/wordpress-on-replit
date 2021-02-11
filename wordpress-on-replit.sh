@@ -29,6 +29,11 @@ mv ./wordpress/wp-config-sample.php ./wordpress/wp-config.php
 NEW_PHRASE=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9!#$%&()*+,-.:;<=>?@^_{|}~' | fold -w 60 | head -n 1)
 sed -i "s/put your unique phrase here/${NEW_PHRASE}/g" ./wordpress/wp-config.php
 
+#Add SSL fix to wp-config.php for repl.it proxy
+cat << EOF >> ./wordpress/wp-config.php
+$_SERVER[ "HTTPS" ] = "on";
+EOF
+
 #Download, extract and cleanup sqlite plugin for WP
 cd ./wordpress/wp-content/plugins
 wget https://downloads.wordpress.org/plugin/sqlite-integration.1.8.1.zip
