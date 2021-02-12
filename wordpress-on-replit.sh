@@ -34,7 +34,7 @@ echo '$_SERVER[ "HTTPS" ] = "on";' >> ./wordpress/wp-config.php
 
 #Download, extract and cleanup sqlite plugin for WP
 cd ./wordpress/wp-content/plugins
-wget https://github.com/ethanpil/wp-sqlite-integration/releases/download/1.8x/wp-sqlite-integration.zip
+wget https://github.com/ethanpil/wp-sqlite-integration/releases/download/1.8x/sqlite-integration.zip
 unzip wp-sqlite-integration.zip
 rm wp-sqlite-integration.zip
 cp ./wp-sqlite-integration/db.php ..
