@@ -40,11 +40,11 @@ echo '$_SERVER[ "HTTPS" ] = "on";' >> ./wordpress/wp-config.php
 #cp ./sqlite-integration/db.php ..
 
 #New SQLITE Plugin: Download, extract and cleanup sqlite plugin for WP
-cd ./wordpress/wp-content
+cd ~/wordpress/wp-content
 wget https://raw.githubusercontent.com/aaemnnosttv/wp-sqlite-db/master/src/db.php
 
 #Download, extract and setup wp-cli and dependencies
-cd ./../../..
+cd ~
 wget http://archive.ubuntu.com/ubuntu/pool/main/l/less/less_551-2_amd64.deb
 for Module in $( ls less*.deb ); do dpkg -x $Module .; done
 mv ./usr/ ~/$REPL_SLUG
@@ -62,7 +62,7 @@ EOL
 chmod +x ~/$REPL_SLUG/wordpress/wp
 
 #remove default repl.it code file
-rm index.php
+rm ~/index.php
 
 #Setup the repl to start PHP with the correct php.ini that includes our modules
 echo 'run = "php -c ~/$REPL_SLUG/php/php.ini -S 0.0.0.0:8000 -t wordpress/"' >> .replit
