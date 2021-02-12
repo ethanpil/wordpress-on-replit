@@ -40,7 +40,7 @@ echo '$_SERVER[ "HTTPS" ] = "on";' >> ./wordpress/wp-config.php
 #cp ./sqlite-integration/db.php ..
 
 #New SQLITE Plugin: Download, extract and cleanup sqlite plugin for WP
-cd ~/wordpress/wp-content
+cd ~/$REPL_SLUG/wordpress/wp-content
 wget https://raw.githubusercontent.com/aaemnnosttv/wp-sqlite-db/master/src/db.php
 
 #Download, extract and setup wp-cli and dependencies
@@ -54,7 +54,7 @@ chmod +x wp-cli.phar
 mv wp-cli.phar ~/$REPL_SLUG/php/wp-cli.phar
 
 #hacky way to get wp-cli working in limited repli.it shell
-cat >wordpress/wp <<EOL
+cat > ~/$REPL_SLUG/wordpress/wp <<EOL
 #!/bin/bash
 export PATH=$PATH:~/$REPL_SLUG/usr/bin:~/$REPL_SLUG:~/$REPL_SLUG/php
 php -c ~/$REPL_SLUG/php/php.ini ~/$REPL_SLUG/php/wp-cli.phar "\$@"
@@ -62,7 +62,7 @@ EOL
 chmod +x ~/$REPL_SLUG/wordpress/wp
 
 #remove default repl.it code file
-rm ~/index.php
+rm ~/$REPL_SLUG/index.php
 
 #Setup the repl to start PHP with the correct php.ini that includes our modules
 echo 'run = "php -c ~/$REPL_SLUG/php/php.ini -S 0.0.0.0:8000 -t wordpress/"' >> .replit
