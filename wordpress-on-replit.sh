@@ -32,12 +32,16 @@ sed -i "s/put your unique phrase here/${NEW_PHRASE}/g" ./wordpress/wp-config.php
 #Add SSL fix to wp-config.php for repl.it proxy
 echo '$_SERVER[ "HTTPS" ] = "on";' >> ./wordpress/wp-config.php
 
-#Download, extract and cleanup sqlite plugin for WP
-cd ./wordpress/wp-content/plugins
-wget https://github.com/ethanpil/wp-sqlite-integration/releases/download/1.8x/sqlite-integration.zip
-unzip sqlite-integration.zip
-rm sqlite-integration.zip
-cp ./sqlite-integration/db.php ..
+#OLD SQLITE Plugin: Download, extract and cleanup sqlite plugin for WP
+#cd ./wordpress/wp-content/plugins
+#wget https://github.com/ethanpil/wp-sqlite-integration/releases/download/1.8x/sqlite-integration.zip
+#unzip sqlite-integration.zip
+#rm sqlite-integration.zip
+#cp ./sqlite-integration/db.php ..
+
+#New SQLITE Plugin: Download, extract and cleanup sqlite plugin for WP
+cd ./wordpress/wp-content
+wget https://raw.githubusercontent.com/aaemnnosttv/wp-sqlite-db/master/src/db.php
 
 #Download, extract and setup wp-cli and dependencies
 cd ./../../..
