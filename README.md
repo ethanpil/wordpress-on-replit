@@ -38,5 +38,5 @@ WP-CLI requires `less` which for some reason is also not included in the base im
 
 ## Thanks & Credits
 * My starting point https://repl.it/talk/learn/Installing-WordPress-on-Replit/34284
-* https://wordpress.org/plugins/sqlite-integration/
+* https://github.com/pts/portable-mariadb
 * https://wp-cli.org/
