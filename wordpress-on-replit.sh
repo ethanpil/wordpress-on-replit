@@ -35,12 +35,11 @@ NEW_PHRASE=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9!#$%&()*+,-.:;<=>?@^_{|}~' | fo
 sed -i "s/put your unique phrase here/${NEW_PHRASE}/g" ./wordpress/wp-config.php
 
 #set database details
-sed -e "s/database_name_here/$dbname/" wp-config.php
-sed -e "s/username_here/$dbuser/g" wp-config.php
+sed -e "s/database_name_here/wprepl/" wp-config.php
+sed -e "s/username_here/root/g" wp-config.php
 
 #Add SSL fix to wp-config.php for repl.it proxy
 echo '$_SERVER[ "HTTPS" ] = "on";' >> ./wordpress/wp-config.php
-
 
 #Download, extract and setup wp-cli and dependencies
 cd ~
