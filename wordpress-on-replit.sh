@@ -35,26 +35,11 @@ sed -i 86i'\$\_SERVER[ \"HTTPS\" ] = \"on\";' ./wordpress/wp-config.php
 # echo '$_SERVER[ "HTTPS" ] = "on";' >> ./wordpress/wp-config.php
 
 #OLD SQLITE Plugin: Download, extract and cleanup sqlite plugin for WP
-# cd ~/$REPL_SLUG/wordpress/wp-content/plugins
-# wget https://github.com/ethanpil/wp-sqlite-integration/releases/download/1.8x/sqlite-integration.zip
-# unzip sqlite-integration.zip
-# rm sqlite-integration.zip
-# cp ./sqlite-integration/db.php ..
-
 cd ~/$REPL_SLUG/wordpress/wp-content/plugins
-wget https://downloads.wordpress.org/plugin/sqlite-integration.1.8.1.zip
-unzip sqlite-integration.1.8.1.zip
-rm sqlite-integration.1.8.1.zip
+wget https://github.com/DaisyOlsen/wp-sqlite-integration/releases/download/1.8x/sqlite-integration.zip
+unzip sqlite-integration.zip
+rm sqlite-integration.zip
 cp ./sqlite-integration/db.php ..
-
-# wget https://downloads.wordpress.org/plugin/sqlite-integration.1.8.1.zip
-# unzip sqlite-integration.1.8.1.zip
-# cp sqlite-integration/db.php ../wordpress/wp-content/
-# mv sqlite-integration/ ../wordpress/wp-content/plugins/
-
-#New SQLITE Plugin: Download, extract and cleanup sqlite plugin for WP
-#cd ~/$REPL_SLUG/wordpress/wp-content
-#wget https://raw.githubusercontent.com/aaemnnosttv/wp-sqlite-db/master/src/db.php
 
 #Download, extract and setup wp-cli and dependencies
 cd ~
