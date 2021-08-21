@@ -30,7 +30,10 @@ NEW_PHRASE=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9!#$%&()*+,-.:;<=>?@^_{|}~' | fo
 sed -i "s/put your unique phrase here/${NEW_PHRASE}/g" ./wordpress/wp-config.php
 
 #Add SSL fix to wp-config.php for repl.it proxy
-sed 's//* Add any custom values between this line and the "stop editing" line. *//f/* Add any custom values between this line and the "stop editing" line. */\n$_SERVER[ "HTTPS" ] = "on";/' ./wordpress/wp-config.php
+sed -i 's/\/* Add any custom values between this line and the "stop editing" line. *\//\/* Add any custom values between this line and the "stop editing" line. *\/\n$_SERVER[ "HTTPS" ] = "on";/' ./wordpress/wp-config.php
+# sed -i 's/fields/fields\nNew Inserted Line/'
+
+
 # echo '$_SERVER[ "HTTPS" ] = "on";' >> ./wordpress/wp-config.php
 
 #OLD SQLITE Plugin: Download, extract and cleanup sqlite plugin for WP
