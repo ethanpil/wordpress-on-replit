@@ -37,9 +37,9 @@ sed -i 86i'\$\_SERVER[ \"HTTPS\" ] = \"on\";' ./wordpress/wp-config.php
 #OLD SQLITE Plugin: Download, extract and cleanup sqlite plugin for WP
 cd ~/$REPL_SLUG/wordpress/wp-content/plugins
 # wget https://github.com/DaisyOlsen/wp-sqlite-integration/releases/download/1.8x/sqlite-integration.zip
-wget https://github.com/DaisyOlsen/wp-sqlite-integration/archive/refs/tags/1.8x.zip
-unzip 1.8x.zip
-rm 1.8x.zip
+wget https://github.com/DaisyOlsen/wp-sqlite-integration/releases/download/1.8x/sqlite-integration.zip
+unzip sqlite-integration.zip
+rm sqlite-integration.zip
 cp ./sqlite-integration/db.php ..
 
 #Download, extract and setup wp-cli and dependencies
