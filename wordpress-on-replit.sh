@@ -40,7 +40,7 @@ echo '$_SERVER[ "HTTPS" ] = "on";' >> ./wordpress/wp-config.php
 # cp ./sqlite-integration/db.php ..
 
 cd ~/$REPL_SLUG/wordpress/wp-content/plugins
-wget hhttps://downloads.wordpress.org/plugin/sqlite-integration.1.8.1.zip
+wget https://downloads.wordpress.org/plugin/sqlite-integration.1.8.1.zip
 unzip sqlite-integration.1.8.1.zip
 rm sqlite-integration.1.8.1.zip
 cp ./sqlite-integration/db.php ..
