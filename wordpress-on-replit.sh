@@ -39,10 +39,16 @@ echo '$_SERVER[ "HTTPS" ] = "on";' >> ./wordpress/wp-config.php
 # rm sqlite-integration.zip
 # cp ./sqlite-integration/db.php ..
 
-wget https://downloads.wordpress.org/plugin/sqlite-integration.1.8.1.zip
+cd ~/$REPL_SLUG/wordpress/wp-content/plugins
+wget hhttps://downloads.wordpress.org/plugin/sqlite-integration.1.8.1.zip
 unzip sqlite-integration.1.8.1.zip
-cp sqlite-integration/db.php ../wordpress/wp-content/
-mv sqlite-integration/ ../wordpress/wp-content/plugins/
+rm sqlite-integration.1.8.1.zip
+cp ./sqlite-integration/db.php ..
+
+# wget https://downloads.wordpress.org/plugin/sqlite-integration.1.8.1.zip
+# unzip sqlite-integration.1.8.1.zip
+# cp sqlite-integration/db.php ../wordpress/wp-content/
+# mv sqlite-integration/ ../wordpress/wp-content/plugins/
 
 #New SQLITE Plugin: Download, extract and cleanup sqlite plugin for WP
 #cd ~/$REPL_SLUG/wordpress/wp-content
