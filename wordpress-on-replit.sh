@@ -5,8 +5,8 @@
 # wget -O - https://raw.githubusercontent.com/ethanpil/wordpress-on-replit/master/wordpress-on-replit.sh | bash
 
 #Download, extract and cleanup required missing PHP modules
-wget http://archive.ubuntu.com/ubuntu/pool/main/p/php7.2/php7.2-mysql_7.2.24-0ubuntu0.18.04.7_amd64.deb
-wget http://archive.ubuntu.com/ubuntu/pool/main/p/php7.2/php7.2-sqlite3_7.2.24-0ubuntu0.18.04.7_amd64.deb
+wget http://archive.ubuntu.com/ubuntu/pool/main/p/php7.2/php7.2-mysql_7.2.24-0ubuntu0.18.04.8_amd64.deb
+wget http://archive.ubuntu.com/ubuntu/pool/main/p/php7.2/php7.2-sqlite3_7.2.24-0ubuntu0.18.04.8_amd64.deb
 for Module in $( ls php*.deb ); do dpkg -x $Module .; done
 mkdir ~/$REPL_SLUG/php
 cp usr/lib/php/*/* ~/$REPL_SLUG/php
@@ -15,8 +15,8 @@ mv ~/$REPL_SLUG/php/mysqlnd.so ~/$REPL_SLUG/php/A-mysqlnd.so #To ensure mysqlnd.
 for Module in $( ls ~/$REPL_SLUG/php/*.so ); do echo "extension=$Module" >> ~/$REPL_SLUG/php/php.ini; done
 rm -rf ./etc/ 
 rm -rf ./usr/
-rm php7.2-mysql_7.2.24-0ubuntu0.18.04.7_amd64.deb
-rm php7.2-sqlite3_7.2.24-0ubuntu0.18.04.7_amd64.deb
+rm php7.2-mysql_7.2.24-0ubuntu0.18.04.8_amd64.deb
+rm php7.2-sqlite3_7.2.24-0ubuntu0.18.04.8_amd64.deb
 
 #Download, extract and cleanup WordPress Latest
 wget https://wordpress.org/latest.zip
