@@ -4,7 +4,8 @@
 # 1. Create a new Repl.it as a PHP Web Server 
 # 2. Update the replit.nix file to include the code in this repo
 # 3. Restart the Repl
-# 4. Run this script: curl -s https://raw.githubusercontent.com/ethanpil/wordpress-on-replit/master/install-wordpress-on-replit.sh | bash
+# 4. Run this command from the Replit shell:
+#    bash <(curl -s https://raw.githubusercontent.com/ethanpil/wordpress-on-replit/master/install-wordpress-on-replit.sh)
 
 echo "Ready to install Wordpress in your Replit."
 echo "Did you make sure you configure your replit.nix files before running this script?"
