@@ -4,7 +4,7 @@
 # 1. Create a new Repl.it as a PHP Web Server 
 # 2. Update the replit.nix file to include the code in this repo
 # 3. Restart the Repl
-# 4. Run this script: wget -O - https://raw.githubusercontent.com/ethanpil/wordpress-on-replit/master/install-wordpress-on-replit.sh | bash
+# 4. Run this script: curl -s https://raw.githubusercontent.com/ethanpil/wordpress-on-replit/master/install-wordpress-on-replit.sh | bash
 
 echo "Ready to install Wordpress in your Replit."
 echo "Did you make sure you configure your replit.nix files before
@@ -30,7 +30,7 @@ rm ~/$REPL_SLUG/index.php
 wp core download
 
 #SQLITE Plugin: Download, extract and cleanup sqlite plugin for WP
-wget --directory-prefix=./wp-content https://raw.githubusercontent.com/aaemnnosttv/wp-sqlite-db/master/src/db.php
+curl -LG https://raw.githubusercontent.com/aaemnnosttv/wp-sqlite-db/master/src/db.php > ./wp-content/db.php
 
 # Get info for WP install
 echo -n Wordpress Admin Username: 
