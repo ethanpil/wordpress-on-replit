@@ -8,9 +8,9 @@
 
 echo "Ready to install Wordpress in your Replit."
 echo "Did you make sure you configure your replit.nix files before running this script?"
+
 read -p "Continue? <Y/n> " prompt
-if [[ $prompt == "N" || $prompt == "n" || $prompt == "No" || $prompt == "no" ]]
-then
+if [[ $prompt == "N" || $prompt == "n" || $prompt == "No" || $prompt == "no" ]]; then
   exit 0
 fi
 
