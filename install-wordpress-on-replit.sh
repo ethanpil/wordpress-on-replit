@@ -39,20 +39,24 @@ wp core download
 curl -LG https://raw.githubusercontent.com/aaemnnosttv/wp-sqlite-db/master/src/db.php > ./wp-content/db.php
 
 # Get info for WP install
-echo -n Wordpress Admin Username: 
-read -s username
 
-echo -n Wordpress Admin Password: 
-read -s password
+read -p "Wordpress Username: " username
+while true; do
+  read -s -p "Wordpress Password: " password
+  echo
+  read -s -p "Wordpress Password (again): " password2
+  echo
+  [ "$password" = "$password2" ] && break
+  echo "Please try again"
+done
 
-echo -n Wordpress Admin Email: 
-read -s email
-
-echo -n Wordpress Website Title: 
-read -s title
+read -p "Wordpress Email: " email
+read -p "Wordpress Website Title: " title
 
 REPL_URL=$REPL_SLUG.$REPL_OWNER.repl.co
-wp core install --url=$REPL_URL --title=$TITLE --admin_user=$username --admin_password=$password --admin_email=$email
+
+# Install Wordpress
+wp core install --url=$REPL_URL --title=$title --admin_user=$username --admin_password=$password --admin_email=$email
 
 #Add SSL fix to wp-config.php for repl.it proxy
 echo '$_SERVER[ "HTTPS" ] = "on";' >> ./wordpress/wp-config.php
@@ -62,5 +66,5 @@ echo ""
 echo "Done! Your new WordPress site is now setup."
 echo "URL: https://$REPL_URL"
 echo "Admin URL: https://$REPL_URL/wp-admin"
-echo "Admin User: $USERNAME"
+echo "Admin User: $username"
 echo "Admin Password: $password"
