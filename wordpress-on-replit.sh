@@ -4,20 +4,6 @@
 # Create a new Repl.it as a PHP Web Server and run this script.
 # wget -O - https://raw.githubusercontent.com/ethanpil/wordpress-on-replit/master/wordpress-on-replit.sh | bash
 
-#Download, extract and cleanup required missing PHP modules
-wget http://archive.ubuntu.com/ubuntu/pool/main/p/php7.2/php7.2-mysql_7.2.24-0ubuntu0.18.04.7_amd64.deb
-wget http://archive.ubuntu.com/ubuntu/pool/main/p/php7.2/php7.2-sqlite3_7.2.24-0ubuntu0.18.04.7_amd64.deb
-for Module in $( ls php*.deb ); do dpkg -x $Module .; done
-mkdir ~/$REPL_SLUG/php
-cp usr/lib/php/*/* ~/$REPL_SLUG/php
-echo 'extension=pdo.so' > ~/$REPL_SLUG/php/php.ini
-mv ~/$REPL_SLUG/php/mysqlnd.so ~/$REPL_SLUG/php/A-mysqlnd.so #To ensure mysqlnd.so is loaded before mysqli.so
-for Module in $( ls ~/$REPL_SLUG/php/*.so ); do echo "extension=$Module" >> ~/$REPL_SLUG/php/php.ini; done
-rm -rf ./etc/ 
-rm -rf ./usr/
-rm php7.2-mysql_7.2.24-0ubuntu0.18.04.7_amd64.deb
-rm php7.2-sqlite3_7.2.24-0ubuntu0.18.04.7_amd64.deb
-
 #Download, extract and cleanup WordPress Latest
 wget https://wordpress.org/latest.zip
 unzip latest.zip
@@ -32,16 +18,12 @@ sed -i "s/put your unique phrase here/${NEW_PHRASE}/g" ./wordpress/wp-config.php
 #Add SSL fix to wp-config.php for repl.it proxy
 echo '$_SERVER[ "HTTPS" ] = "on";' >> ./wordpress/wp-config.php
 
-#OLD SQLITE Plugin: Download, extract and cleanup sqlite plugin for WP
-cd ~/$REPL_SLUG/wordpress/wp-content/plugins
-wget https://github.com/ethanpil/wp-sqlite-integration/releases/download/1.8x/sqlite-integration.zip
-unzip sqlite-integration.zip
-rm sqlite-integration.zip
-cp ./sqlite-integration/db.php ..
+#
+#echo 'define ('FS_METHOD', 'direct');' >> ./wordpress/wp-config.php
 
 #New SQLITE Plugin: Download, extract and cleanup sqlite plugin for WP
-#cd ~/$REPL_SLUG/wordpress/wp-content
-#wget https://raw.githubusercontent.com/aaemnnosttv/wp-sqlite-db/master/src/db.php
+cd ~/$REPL_SLUG/wordpress/wp-content
+wget https://raw.githubusercontent.com/aaemnnosttv/wp-sqlite-db/master/src/db.php
 
 #Download, extract and setup wp-cli and dependencies
 cd ~
