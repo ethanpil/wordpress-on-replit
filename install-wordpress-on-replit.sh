@@ -38,8 +38,13 @@ wp core download
 #SQLITE Plugin: Download, extract and cleanup sqlite plugin for WP
 curl -LG https://raw.githubusercontent.com/aaemnnosttv/wp-sqlite-db/master/src/db.php > ./wp-content/db.php
 
-# Get info for WP install
+#Create dummy config to be overruled by sqlite plugin
+wp config create --skip-check --dbname=wp --dbuser=wp --dbpass=pass --extra-php <<PHP
+$_SERVER[ "HTTPS" ] = "on";
+define ('FS_METHOD', 'direct')
+PHP
 
+# Get info for WP install
 read -p "Wordpress Username: " username
 while true; do
   read -s -p "Wordpress Password: " password
@@ -57,10 +62,6 @@ REPL_URL=$REPL_SLUG.$REPL_OWNER.repl.co
 
 # Install Wordpress
 wp core install --url=$REPL_URL --title=$title --admin_user=$username --admin_password=$password --admin_email=$email
-
-#Add SSL fix to wp-config.php for repl.it proxy
-echo '$_SERVER[ "HTTPS" ] = "on";' >> ./wordpress/wp-config.php
-echo 'define ('FS_METHOD', 'direct');' >> ./wordpress/wp-config.php
 
 echo ""
 echo "Done! Your new WordPress site is now setup."
