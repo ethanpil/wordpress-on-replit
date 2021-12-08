@@ -7,7 +7,14 @@
 # 4. Run this script: curl -s https://raw.githubusercontent.com/ethanpil/wordpress-on-replit/master/install-wordpress-on-replit.sh | bash
 
 echo "Ready to install Wordpress in your Replit."
-echo "Did you make sure you configure your replit.nix files before
+echo "Did you make sure you configure your replit.nix files before running this script?"
+read -p "Continue? <y/N> " prompt
+if [[ $prompt == "y" || $prompt == "Y" || $prompt == "yes" || $prompt == "Yes" ]]
+then
+  # http://stackoverflow.com/questions/1537673/how-do-i-forward-parameters-to-other-command-in-bash-script
+else
+  exit 0
+fi
 
 #Make sure steps 1-3 are completed before installing Wordpress
 if ! [ -x "$(command -v less)" ]; then
