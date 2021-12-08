@@ -8,11 +8,9 @@
 
 echo "Ready to install Wordpress in your Replit."
 echo "Did you make sure you configure your replit.nix files before running this script?"
-read -p "Continue? <y/N> " prompt
-if [[ $prompt == "y" || $prompt == "Y" || $prompt == "yes" || $prompt == "Yes" ]]
+read -p "Continue? <Y/n> " prompt
+if [[ $prompt == "N" || $prompt == "n" || $prompt == "No" || $prompt == "no" ]]
 then
-  # http://stackoverflow.com/questions/1537673/how-do-i-forward-parameters-to-other-command-in-bash-script
-else
   exit 0
 fi
 
