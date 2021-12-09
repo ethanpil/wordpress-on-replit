@@ -1,42 +1,45 @@
 # Run WordPress on Repl.it
-Install WordPress and wp-cli on [Repl.it](https://repl.it/) via SQLite
+Install WordPress and wp-cli on [Repl.it](https://repl.it/) using SQLite
 
 ## How
 1. Create a new Repl.it as a PHP Web Server
-2. In the console, run this script:<br>
- `wget -O - https://raw.githubusercontent.com/ethanpil/wordpress-on-replit/master/wordpress-on-replit.sh | bash`
-3. Install your WordPress site and work!
+2. Update the replit.nix file to include the code in this repo
+3. Restart the Repl
+4. Run this command from the Replit shell:
+`bash <(curl -s https://raw.githubusercontent.com/ethanpil/wordpress-on-replit/master/install-wordpress-on-replit.sh)`
 
 ## Caveats:
 * WordPress is running on a local SQLite file. Not performant. Great for testing and hacking.
-* WP-CLI is very hacky but works. You can execute it from the base wordpress directory with `./wp` as repl.it currently has no way to set PATH in a reliable way.
-* Subject to all of the limitations of the [SQLite plugin](https://github.com/wp-plugins/sqlite-integration)
+* WordPress is running on PHP's built in web server which doesn't support rewrites (fancy URLs)
+* Subject to all of the limitations of the [SQLite plugin](https://github.com/aaemnnosttv/wp-sqlite-db)
 
-## Notes:
-You can remove wp-cli by deleting `wordpress/wp` and `~/php/wp-cli.phar` and `~/usr`
+## Future
+I would like to explore setting up a Router Script for the PHP web server to see if I can get rewrites working. Some initial research:
+* https://gist.github.com/thiagof/d940f8fe4b265c8c15f3109b45aa5001
+* https://www.php.net/manual/en/features.commandline.webserver.php
+* https://stackoverflow.com/questions/27381520/php-built-in-server-and-htaccess-mod-rewrites
 
 ## How It Works
 
-*Overview*
+[Repl.it](https://repl.it/) now allows users to configure a REPL via Nix. The newest Nix environments include packages for PHP with SQLite Support, as well as WP-Cli support. So everything you need is now available. (Unline in the past when we really had to go deep in and mess with things in a nasty way).
 
-[Repl.it](https://repl.it/) does not have MySQL available for `PHP Web Server` repls, but even more surprisingly, the SQLite extension is also not included. We also have quite a few limitations. The shell is quite hardened, and we cannot install packages or even modify the path. PHP code that is available via the public port is served by  [PHP's Command Line Web Server](https://www.php.net/manual/en/features.commandline.webserver.php) and passed through to port 80 via the repl's public URL.
+All we have to do now is setup Repl to load in the correct Nix packages and install WordPress with the SQLite plugun. The `replit.nix` file in this Repo includes the necessary Nix packages and the Bash script `install-wordpress-on-replit.sh` simply automates the Wordpress install.
 
-*Getting the PHP Modules loaded*
+The script does the following:
 
-Luckily, we know that Repl.it runs [Ubuntu](https://hub.docker.com/r/replco/polygott) as the base image for all languages. What we have to do is download the correct PHP modules for Ubuntu and then get PHP to load them at runtime. Fortunately, Repl.it also allows us to [define a custom run command](https://docs.repl.it/repls/dot-replit) where we can force PHP start the Command Line Web Server but using our customized php.ini file which loads the modules.
-
-*Getting WP-CLI working*
-
-Since WP-CLI does not use the run command, but is actually run at the command line, we cannot expect the modules to be available for it. Addtionally, we cannot simply alter the `PATH` variable in Bash to make an easy alias. What finally worked was creating a simple Bash script as `wordpress/wp` which loads the path and then forces php to run the WP-CLI phar file with a custom php.ini as defined in `~/php/php.ini` and viola! It's hacky and barely works. I'm sure lots of functions don't, and it has not been fully tested. Some examples that worked:
-
-* `./wp plugin install disable-comments`
-* `./wp plugin activate disable-comments`
-
-## Paths
-The php modules are downloaded to `~/php` and the .ini file is created there as well
-WP-CLI requires `less` which for some reason is also not included in the base image, so that is downloaded and installed into `~/usr/bin`
+1. Check to make sure Nix has installed the packages needed for WP-Cli (less and wp).
+2. Download WordPress files through WP-Cli
+3. Download and install the SQLite plugin for WordPress
+4. Create a basic `wp-config.php` file with some tweaks for Replit and your Repl URL.
+5. Ask for your prefered credentials and install WP
 
 ## Thanks & Credits
-* My starting point https://repl.it/talk/learn/Installing-WordPress-on-Replit/34284
+
+Nix Version:
+* https://github.com/aaemnnosttv/wp-sqlite-db
+* https://wp-cli.org/
+
+Orignial Version:
+* https://repl.it/talk/learn/Installing-WordPress-on-Replit/34284
 * https://wordpress.org/plugins/sqlite-integration/
 * https://wp-cli.org/
