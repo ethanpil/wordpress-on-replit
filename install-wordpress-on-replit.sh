@@ -40,8 +40,11 @@ curl -LG https://raw.githubusercontent.com/aaemnnosttv/wp-sqlite-db/master/src/d
 
 #Create dummy config to be overruled by sqlite plugin
 wp config create --skip-check --dbname=wp --dbuser=wp --dbpass=pass --extra-php <<PHP
-$_SERVER[ "HTTPS" ] = "on";
-define ('FS_METHOD', 'direct')
+\$_SERVER[ "HTTPS" ] = "on";
+define( 'WP_HOME', 'https://$REPL_SLUG.$REPL_OWNER.repl.co' );
+define( 'WP_SITEURL', 'https://$REPL_SLUG.$REPL_OWNER.repl.co' );
+define ('FS_METHOD', 'direct');
+define('FORCE_SSL_ADMIN', true);
 PHP
 
 # Get info for WP install
