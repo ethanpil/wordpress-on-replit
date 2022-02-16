@@ -21,7 +21,7 @@ I would like to explore setting up a Router Script for the PHP web server to see
 
 ## How It Works
 
-[Repl.it](https://repl.it/) now allows users to configure a REPL via Nix. The newest Nix environments include packages for PHP with SQLite Support, as well as WP-Cli support. So everything you need is now available. (Unline in the past when we really had to go deep in and mess with things in a nasty way).
+[Repl.it](https://repl.it/) now allows users to configure a REPL via Nix. The newest Nix environments include packages for PHP with SQLite Support, as well as WP-Cli support. So everything you need is now available. (Unlike in the past when we really had to go deep in and mess with things in a nasty way).
 
 All we have to do now is setup Repl to load in the correct Nix packages and install WordPress with the SQLite plugun. The `replit.nix` file in this Repo includes the necessary Nix packages and the Bash script `install-wordpress-on-replit.sh` simply automates the Wordpress install.
 
