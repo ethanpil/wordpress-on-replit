@@ -15,6 +15,7 @@ Install WordPress and wp-cli on [Repl.it](https://repl.it/) using SQLite
 
 ## Future
 I would like to explore setting up a Router Script for the PHP web server to see if I can get rewrites working. Some initial research:
+* https://old.romaricpascal.is/writing-about/running-worpdress-with-php-built-in-server/
 * https://gist.github.com/thiagof/d940f8fe4b265c8c15f3109b45aa5001
 * https://www.php.net/manual/en/features.commandline.webserver.php
 * https://stackoverflow.com/questions/27381520/php-built-in-server-and-htaccess-mod-rewrites
