@@ -41,10 +41,10 @@ curl -LG https://raw.githubusercontent.com/aaemnnosttv/wp-sqlite-db/master/src/d
 #Create dummy config to be overruled by sqlite plugin
 wp config create --skip-check --dbname=wp --dbuser=wp --dbpass=pass --extra-php <<PHP
 \$_SERVER[ "HTTPS" ] = "on";
-define( 'WP_HOME', 'https://$REPL_SLUG.$REPL_OWNER.repl.co' );
-define( 'WP_SITEURL', 'https://$REPL_SLUG.$REPL_OWNER.repl.co' );
+define('WP_SITEURL', 'https://' . $_SERVER['HTTP_HOST']);
+define('WP_HOME', 'https://' . $_SERVER['HTTP_HOST']);
 define ('FS_METHOD', 'direct');
-define('FORCE_SSL_ADMIN', true);
+define('FORCE_SSL_ADMIN', false);
 PHP
 
 # Get info for WP install
@@ -68,7 +68,5 @@ wp core install --url=$REPL_URL --title=$title --admin_user=$username --admin_pa
 
 echo ""
 echo "Done! Your new WordPress site is now setup."
-echo "URL: https://$REPL_URL"
-echo "Admin URL: https://$REPL_URL/wp-admin"
 echo "Admin User: $username"
 echo "Admin Password: $password"
