@@ -20,6 +20,20 @@ I would like to explore setting up a Router Script for the PHP web server to see
 * https://www.php.net/manual/en/features.commandline.webserver.php
 * https://stackoverflow.com/questions/27381520/php-built-in-server-and-htaccess-mod-rewrites
 
+## Optional PHP Packages
+You can install some additional PHP packages with the `nix` file if your plugins might need them:
+More details are available from the [WordPress Documentation on suggested PHP Extensions](https://make.wordpress.org/hosting/handbook/server-environment/#php-extensions).
+```
+    pkgs.phpExtensions.curl  
+    pkgs.phpExtensions.mbstring   
+    pkgs.phpExtensions.imagick
+    pkgs.phpExtensions.dom  
+    pkgs.phpPackages.exif  
+    pkgs.phpPackages.fileinfo  
+    pkgs.phpPackages.hash
+    pkgs.phpPackages.igbinary
+    pkgs.phpPackages.intl
+```
 ## How It Works
 
 [Repl.it](https://repl.it/) now allows users to configure a REPL via Nix. The newest Nix environments include packages for PHP with SQLite Support, as well as WP-Cli support. So everything you need is now available. (Unlike in the past when we really had to go deep in and mess with things in a nasty way).
@@ -40,7 +54,7 @@ Nix Version:
 * https://github.com/aaemnnosttv/wp-sqlite-db
 * https://wp-cli.org/
 
-Orignial Version:
+Original Version:
 * https://repl.it/talk/learn/Installing-WordPress-on-Replit/34284
 * https://wordpress.org/plugins/sqlite-integration/
 * https://wp-cli.org/
