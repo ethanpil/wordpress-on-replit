@@ -1,3 +1,8 @@
+# PROJECT IS ARCHIVED
+I have not used this in years and doubt it even works anymore. Additionally, replit has reworked their systems and this is likely useless at this point.
+
+----
+
 # Run WordPress on Repl.it
 Install WordPress and wp-cli on [Repl.it](https://repl.it/) using SQLite
 
